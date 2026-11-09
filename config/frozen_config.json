@@ -1,0 +1,133 @@
+{
+  "data_sha256": {
+    "fixture_manifest.json": "8539f47f6c9c2d8a8ec0864762aa2e03ca96bb7c7305c08cf555643f0d681289",
+    "synthetic_voltage_context_events.csv": "d074ad055163a4d47bf4c73f742fbf6c7bd11ed97e65ace5c49d2b36fba61030",
+    "synthetic_voltage_faults.csv": "55ccb88ba82ce41ec4643c2a0109d0364b3b3184d4114b3990cabd6518c30fc7",
+    "synthetic_voltage_readings.csv": "7b8b89a024040520e53c7a7c054163840ea7f9a8709bc205ebe919d7ae0fb24a"
+  },
+  "false_alert_budget_per_24_sensor_hours": 1.0,
+  "fixed_limit": {
+    "center_source": "median of valid calibration-partition readings, rounded to 0.1 V",
+    "center_v": 120.0,
+    "half_width_v": 3.0,
+    "lower_v": 117.0,
+    "n_candidates": 21,
+    "n_feasible": 14,
+    "selection_partition_results": {
+      "calibration_alert_events": 6,
+      "calibration_detected": 4,
+      "calibration_eligible_slots": 1417,
+      "calibration_fa_per_24h": 0.40649258997882853,
+      "calibration_false_alerts": 2,
+      "calibration_faults_total": 4,
+      "calibration_mean_latency_min": 0.0,
+      "calibration_missed": 0,
+      "tuning_alert_events": 10,
+      "tuning_detected": 6,
+      "tuning_eligible_slots": 1429,
+      "tuning_fa_per_24h": 0.8061581525542338,
+      "tuning_false_alerts": 4,
+      "tuning_faults_total": 6,
+      "tuning_mean_latency_min": 0.0,
+      "tuning_missed": 0
+    },
+    "upper_v": 123.0
+  },
+  "grids": {
+    "fixed_half_width_v": [
+      2.0,
+      2.5,
+      3.0,
+      3.5,
+      4.0,
+      4.5,
+      5.0,
+      5.5,
+      6.0,
+      6.5,
+      7.0,
+      7.5,
+      8.0,
+      8.5,
+      9.0,
+      9.5,
+      10.0,
+      10.5,
+      11.0,
+      11.5,
+      12.0
+    ],
+    "mad_scale": 1.4826,
+    "rolling_floor_v": [
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "rolling_k": [
+      3.0,
+      4.0,
+      5.0,
+      6.0,
+      8.0,
+      10.0,
+      12.0,
+      14.0
+    ],
+    "rolling_window_frozen": 12
+  },
+  "heldout_evaluated": false,
+  "label": "SYNTHETIC - arbitrary test settings; not operational grid thresholds",
+  "partitions_half_open_utc": {
+    "calibration": {
+      "end_utc_exclusive": "2026-01-06T00:00:00Z",
+      "start_utc": "2026-01-01T00:00:00Z"
+    },
+    "heldout": {
+      "end_utc_exclusive": "2026-01-16T00:00:00Z",
+      "start_utc": "2026-01-11T00:00:00Z"
+    },
+    "tuning": {
+      "end_utc_exclusive": "2026-01-11T00:00:00Z",
+      "start_utc": "2026-01-06T00:00:00Z"
+    }
+  },
+  "rolling_median_mad": {
+    "floor_v": 0.5,
+    "k": 10.0,
+    "mad_scale": 1.4826,
+    "n_candidates": 32,
+    "n_feasible": 14,
+    "selection_partition_results": {
+      "calibration_alert_events": 6,
+      "calibration_detected": 4,
+      "calibration_eligible_slots": 1417,
+      "calibration_fa_per_24h": 0.40649258997882853,
+      "calibration_false_alerts": 2,
+      "calibration_faults_total": 4,
+      "calibration_mean_latency_min": 0.0,
+      "calibration_missed": 0,
+      "tuning_alert_events": 10,
+      "tuning_detected": 6,
+      "tuning_eligible_slots": 1429,
+      "tuning_fa_per_24h": 0.8061581525542338,
+      "tuning_false_alerts": 4,
+      "tuning_faults_total": 6,
+      "tuning_mean_latency_min": 0.0,
+      "tuning_missed": 0
+    },
+    "window": 12
+  },
+  "scoring_contract": {
+    "denominator": "eligible slots in the partition x interval_min / 60 sensor-hours",
+    "eligible_slot": "valid reading with >= 12 valid readings before it (same for both methods)",
+    "false_alerts": "alert events not matched to any fault",
+    "grouping": "consecutive flagged eligible slots; missing/ineligible/unflagged slot breaks a group",
+    "latency": "first in-fault flag timestamp minus fault onset (alert start reported separately)",
+    "matching": "chronological one-to-one; requires >=1 contributing flag in [fault start, fault end)",
+    "rolling_history": "earlier readings, including earlier partitions, may initialise history"
+  },
+  "selection_data_end_exclusive_utc": "2026-01-11T00:00:00Z",
+  "selection_rule": "Applied identically to each method on the TUNING partition only, using the Handoff 3 scoring contract. 1) Feasible = candidates with false alert events per 24 eligible sensor-hours <= 1.0. 2) Among feasible, maximise faults detected. 3) Ties: minimise mean detection latency (first in-fault flag minus onset) over detected faults. 4) Ties: minimise false alert events. 5) Ties: prefer the most conservative setting (widest fixed band; for rolling, larger k then larger floor). If no candidate is feasible: rank by false alerts per 24 h ascending, then apply steps 2-5.",
+  "status": "FROZEN before held-out evaluation"
+}

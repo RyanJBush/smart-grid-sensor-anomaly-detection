@@ -1,0 +1,133 @@
+{
+  "failure_case": {
+    "kind": "missed_fault",
+    "method": "rolling_median_mad",
+    "ref": "SF16",
+    "rule": "Fixed before looking at results. 1) The earliest-onset fault missed by either method (fixed limit first on ties). 2) Else the earliest sustained shift whose in-fault slots the rolling detector stopped flagging (adaptation). 3) Else the earliest unmatched alert overlapping a benign load change."
+  },
+  "fixture_hashes_verified": {
+    "fixture_manifest.json": "8539f47f6c9c2d8a8ec0864762aa2e03ca96bb7c7305c08cf555643f0d681289",
+    "synthetic_voltage_context_events.csv": "d074ad055163a4d47bf4c73f742fbf6c7bd11ed97e65ace5c49d2b36fba61030",
+    "synthetic_voltage_faults.csv": "55ccb88ba82ce41ec4643c2a0109d0364b3b3184d4114b3990cabd6518c30fc7",
+    "synthetic_voltage_readings.csv": "7b8b89a024040520e53c7a7c054163840ea7f9a8709bc205ebe919d7ae0fb24a"
+  },
+  "frozen_config_sha256": "2735a40ba5b425682b301e3beec4bcbc4f936af6e1f7cf8e818dc8e74accd4f1",
+  "frozen_settings": {
+    "fixed_limit": {
+      "center_source": "median of valid calibration-partition readings, rounded to 0.1 V",
+      "center_v": 120.0,
+      "half_width_v": 3.0,
+      "lower_v": 117.0,
+      "n_candidates": 21,
+      "n_feasible": 14,
+      "selection_partition_results": {
+        "calibration_alert_events": 6,
+        "calibration_detected": 4,
+        "calibration_eligible_slots": 1417,
+        "calibration_fa_per_24h": 0.40649258997882853,
+        "calibration_false_alerts": 2,
+        "calibration_faults_total": 4,
+        "calibration_mean_latency_min": 0.0,
+        "calibration_missed": 0,
+        "tuning_alert_events": 10,
+        "tuning_detected": 6,
+        "tuning_eligible_slots": 1429,
+        "tuning_fa_per_24h": 0.8061581525542338,
+        "tuning_false_alerts": 4,
+        "tuning_faults_total": 6,
+        "tuning_mean_latency_min": 0.0,
+        "tuning_missed": 0
+      },
+      "upper_v": 123.0
+    },
+    "rolling_median_mad": {
+      "floor_v": 0.5,
+      "k": 10.0,
+      "mad_scale": 1.4826,
+      "n_candidates": 32,
+      "n_feasible": 14,
+      "selection_partition_results": {
+        "calibration_alert_events": 6,
+        "calibration_detected": 4,
+        "calibration_eligible_slots": 1417,
+        "calibration_fa_per_24h": 0.40649258997882853,
+        "calibration_false_alerts": 2,
+        "calibration_faults_total": 4,
+        "calibration_mean_latency_min": 0.0,
+        "calibration_missed": 0,
+        "tuning_alert_events": 10,
+        "tuning_detected": 6,
+        "tuning_eligible_slots": 1429,
+        "tuning_fa_per_24h": 0.8061581525542338,
+        "tuning_false_alerts": 4,
+        "tuning_faults_total": 6,
+        "tuning_mean_latency_min": 0.0,
+        "tuning_missed": 0
+      },
+      "window": 12
+    }
+  },
+  "heldout_evaluated": true,
+  "heldout_window_utc": {
+    "end_exclusive": "2026-01-16T00:00:00Z",
+    "start": "2026-01-11T00:00:00Z"
+  },
+  "label": "SYNTHETIC replay - scoped to this seeded fixture; not real-equipment performance",
+  "methods": {
+    "fixed_limit": {
+      "alert_events": 11,
+      "coverage_eligible": 0.9881944444444445,
+      "coverage_valid": 0.9881944444444445,
+      "eligible_slots": 1423,
+      "faults_detected": 6,
+      "faults_missed": 0,
+      "faults_total": 6,
+      "mean_latency_min": 0.0,
+      "monitored_sensor_hours": 118.58333333333333,
+      "per_fault_latency_min": {
+        "SF11": 0.0,
+        "SF12": 0.0,
+        "SF13": 0.0,
+        "SF14": 0.0,
+        "SF15": 0.0,
+        "SF16": 0.0
+      },
+      "scheduled_slots": 1440,
+      "unmatched_alert_events": 5,
+      "unmatched_in_fault_duplicates": 1,
+      "unmatched_no_in_fault_flag": 4,
+      "unmatched_overlapping_benign_load_change": 4,
+      "unmatched_per_24_sensor_hours": 1.01194659170766,
+      "unmatched_within_60min_after_a_fault_end": 0,
+      "valid_slots": 1423
+    },
+    "rolling_median_mad": {
+      "alert_events": 9,
+      "coverage_eligible": 0.9881944444444445,
+      "coverage_valid": 0.9881944444444445,
+      "eligible_slots": 1423,
+      "faults_detected": 5,
+      "faults_missed": 1,
+      "faults_total": 6,
+      "mean_latency_min": 0.0,
+      "monitored_sensor_hours": 118.58333333333333,
+      "per_fault_latency_min": {
+        "SF11": 0.0,
+        "SF12": 0.0,
+        "SF13": 0.0,
+        "SF14": 0.0,
+        "SF15": 0.0,
+        "SF16": null
+      },
+      "scheduled_slots": 1440,
+      "unmatched_alert_events": 4,
+      "unmatched_in_fault_duplicates": 0,
+      "unmatched_no_in_fault_flag": 4,
+      "unmatched_overlapping_benign_load_change": 0,
+      "unmatched_per_24_sensor_hours": 0.809557273366128,
+      "unmatched_within_60min_after_a_fault_end": 3,
+      "valid_slots": 1423
+    }
+  },
+  "seed": 20260101
+}

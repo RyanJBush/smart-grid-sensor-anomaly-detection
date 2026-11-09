@@ -1,0 +1,4 @@
+# SYNTHETIC DATA - invented for software testing; not real grid measurements
+fault_id,fault_type,start_utc,end_utc_exclusive
+F1,spike,2026-01-01T00:20:00Z,2026-01-01T00:25:00Z
+F2,sustained_level_shift,2026-01-01T00:40:00Z,2026-01-01T00:55:00Z

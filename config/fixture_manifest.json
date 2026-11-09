@@ -1,0 +1,41 @@
+{
+  "detector_input_columns": [
+    "timestamp_utc",
+    "sensor_id",
+    "voltage_v"
+  ],
+  "interval_min": 5,
+  "label": "SYNTHETIC DATA - invented for software testing; not real grid measurements",
+  "label_files": [
+    "synthetic_voltage_faults.csv",
+    "synthetic_voltage_context_events.csv"
+  ],
+  "model": {
+    "ar1_phi": 0.6,
+    "daily_sine_amplitude_v": 0.4,
+    "innovation_sd_v": 0.3,
+    "nominal_v": 120.0,
+    "random_dropout_p": 0.004,
+    "rounding_decimals": 2
+  },
+  "n_slots": 4320,
+  "partitions_half_open_utc": {
+    "calibration": {
+      "end_utc_exclusive": "2026-01-06T00:00:00Z",
+      "start_utc": "2026-01-01T00:00:00Z"
+    },
+    "heldout": {
+      "end_utc_exclusive": "2026-01-16T00:00:00Z",
+      "start_utc": "2026-01-11T00:00:00Z"
+    },
+    "tuning": {
+      "end_utc_exclusive": "2026-01-11T00:00:00Z",
+      "start_utc": "2026-01-06T00:00:00Z"
+    }
+  },
+  "rng": "python random.Random(seed): one gauss() then one random() per slot, in slot order",
+  "schedule_is_fixed_in_code": true,
+  "seed": 20260101,
+  "sensor_id": "SYNTHETIC-SENSOR-SEEDED-01",
+  "series_start_utc": "2026-01-01T00:00:00Z"
+}
